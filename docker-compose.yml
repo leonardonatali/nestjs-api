@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+    mongo:
+        image: mongo:5.0.1
+        volumes:
+            - ./database/mongo:/data/db
+        env_file: ./.env
+        user: "1000"
+        logging: 
+            driver: none
+        ports: 
+            - "27017:27017"
+
+    app:
+        depends_on:
+            - mongo
+        build: .
+        volumes:
+            - ./:/app
+        ports:
+            - "80:80"
+        env_file: ./.env
+        user: "1000"
+
+
