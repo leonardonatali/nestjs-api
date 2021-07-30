@@ -1,0 +1,7 @@
+README.md
+.env
+Dockerfile
+node_modules
+LICENSE
+makefile
+dist
