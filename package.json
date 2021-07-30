@@ -1,0 +1,23 @@
+{
+  "name": "nestjs-api",
+  "version": "0.0.1",
+  "description": "Aplicação responsável por gerenciar partidas de tênis, bem como os rankings e desafios.\r ## Tecnologias utilizadas",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch --no-notify node_modules  src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardonatali/nestjs-api.git"
+  },
+  "author": "Leonardo Natali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonardonatali/nestjs-api/issues"
+  },
+  "homepage": "https://github.com/leonardonatali/nestjs-api#readme",
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
