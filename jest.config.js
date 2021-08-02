@@ -1,8 +1,3 @@
-/*
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
-
 module.exports = {
   clearMocks: true,
   collectCoverage: true,
@@ -23,5 +18,6 @@ module.exports = {
   testPathIgnorePatterns: [
     '/node_modules/'
   ],
-  verbose: true
+  verbose: true,
+  preset: 'ts-jest'
 }
