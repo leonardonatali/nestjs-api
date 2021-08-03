@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8080/players
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "test@example.com",
+    "phone": "27999999999"
+}
