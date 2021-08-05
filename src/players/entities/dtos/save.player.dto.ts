@@ -1,4 +1,4 @@
-export class CreatePlayerDto {
+export class SavePlayerDto {
     name!: string
     phone!: string
     email!:string

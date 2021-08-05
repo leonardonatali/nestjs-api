@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
-import { CreatePlayerDto } from './entities/dtos/create.player.dto'
+import { SavePlayerDto } from './entities/dtos/save.player.dto'
 import { PlayersService } from './players.service'
 
 @Controller('players')
@@ -11,9 +11,9 @@ export class PlayersController {
   }
 
     @Post()
-  async savePlayer (@Body() createPlayer: CreatePlayerDto) {
-    await this.playersService.save(createPlayer)
-    return createPlayer
+  async savePlayer (@Body() dto: SavePlayerDto) {
+    await this.playersService.save(dto)
+    return dto
   }
 
   @Get()

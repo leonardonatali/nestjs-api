@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { randomUUID } from 'crypto'
-import { CreatePlayerDto } from './entities/dtos/create.player.dto'
+import { SavePlayerDto } from './entities/dtos/save.player.dto'
 import { Player } from './entities/player.entity'
 
 @Injectable()
@@ -8,7 +8,14 @@ export class PlayersService {
     private players: Player[] = []
     private readonly logger = new Logger(PlayersService.name)
 
-    async save (savePlayerDto: CreatePlayerDto) {
+    async save (savePlayerDto: SavePlayerDto) {
+      const found = this.findPlayerByEmail(savePlayerDto.email)
+      if (found) {
+        this.logger.log('a player has been updated')
+        this.update(found, savePlayerDto)
+        return
+      }
+
       this.logger.log('new player has been created')
       this.create(savePlayerDto)
     }
@@ -17,7 +24,11 @@ export class PlayersService {
       return this.players
     }
 
-    private async create (createPlayerDto: CreatePlayerDto): Promise<void> {
+    private findPlayerByEmail (email: string): Player|undefined {
+      return this.players.find(player => player.email === email)
+    }
+
+    private async create (createPlayerDto: SavePlayerDto): Promise<void> {
       const player: Player = {
         _id: randomUUID(),
         email: createPlayerDto.email,
@@ -29,5 +40,10 @@ export class PlayersService {
       }
 
       this.players.push(player)
+    }
+
+    private update (player: Player, dto: SavePlayerDto): void {
+      player.name = dto.name
+      player.phone = dto.phone
     }
 }
