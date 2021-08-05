@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, NotFoundException } from '@nestjs/common'
+import { Body, Controller, Get, Post, Query, NotFoundException, Delete } from '@nestjs/common'
 import { QueryPlayerDto } from './dtos/get.player.dto'
 import { SavePlayerDto } from './dtos/save.player.dto'
 import { PlayersService } from './players.service'
@@ -30,5 +30,18 @@ export class PlayersController {
     }
 
     return this.playersService.getAll()
+  }
+
+  @Delete()
+  async delete (@Query() query: QueryPlayerDto) {
+    if (query.email) {
+      const player = this.playersService.getByEmail(query.email)
+
+      if (player) {
+        this.playersService.deleteByEmail(player.email)
+        return
+      }
+    }
+    throw new NotFoundException()
   }
 }

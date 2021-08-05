@@ -25,7 +25,14 @@ export class PlayersService {
     }
 
     getByEmail (email: string): Player|undefined {
-      return this.players.find(player => player.email === email)
+      return this.players.find(player => player && player.email === email)
+    }
+
+    deleteByEmail (email: string) {
+      const i = this.players.findIndex(player => player.email === email)
+      if (i > -1) {
+        delete this.players[i]
+      }
     }
 
     private findPlayerByEmail (email: string): Player|undefined {
