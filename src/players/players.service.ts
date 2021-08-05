@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { randomUUID } from 'crypto'
-import { SavePlayerDto } from './entities/dtos/save.player.dto'
+import { SavePlayerDto } from './dtos/save.player.dto'
 import { Player } from './entities/player.entity'
 
 @Injectable()

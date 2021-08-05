@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
-import { SavePlayerDto } from './entities/dtos/save.player.dto'
+import { SavePlayerDto } from './dtos/save.player.dto'
 import { PlayersService } from './players.service'
 
 @Controller('players')
