@@ -24,6 +24,10 @@ export class PlayersService {
       return this.players
     }
 
+    getByEmail (email: string): Player|undefined {
+      return this.players.find(player => player.email === email)
+    }
+
     private findPlayerByEmail (email: string): Player|undefined {
       return this.players.find(player => player.email === email)
     }
