@@ -1,5 +1,5 @@
 export class CreatePlayerDto {
-    name?: string
-    phone?: string
-    email?:string
+    name!: string
+    phone!: string
+    email!:string
 }
